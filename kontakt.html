@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — Marte Strandli</title>
+<meta name="description" content="Ta kontakt med Marte Strandli for internship eller samarbeid innen produkt- og interaksjonsdesign.">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="nav-logo">MARTE STRANDLI</a>
+    <button class="nav-menu-btn" aria-label="Meny" aria-expanded="false">
+      <span class="dots">
+        <i class="tl"></i><i class="tr"></i>
+        <i class="c"></i>
+        <i class="bl"></i><i class="br"></i>
+      </span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="prosjekter.html">Prosjekter</a></li>
+      <li><a href="om-meg.html">Om meg</a></li>
+      <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <section class="contact-hero hero-pink container">
+    <h1>Send meg<br>en melding</h1>
+    <div class="email-copy-wrap">
+      <button class="email-copy" data-copy-email="martestrandli@gmail.com">
+        <span>martestrandli@gmail.com</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+      </button>
+      <span class="copy-tooltip">Kopier</span>
+    </div>
+
+    <!--
+      Dette skjemaet er satt opp for Netlify Forms. Det virker automatisk
+      så snart siden er publisert på Netlify — du trenger ikke noe eget
+      "backend". Se README.md for hvordan du kobler til Netlify.
+      Hvis du hoster et annet sted enn Netlify, må skjemaet kobles til en
+      annen tjeneste (f.eks. Formspree) — spør Claude når du er klar for det.
+    -->
+    <form class="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="kontakt-takk.html">
+      <input type="hidden" name="form-name" value="kontakt">
+      <p class="hp-field"><label>Ikke fyll ut dette feltet: <input name="bot-field"></label></p>
+      <input type="text" name="navn" placeholder="Navn" required>
+      <input type="email" name="epost" placeholder="Email" required>
+      <textarea name="melding" placeholder="Fyll ut her...." required></textarea>
+      <button class="btn btn-dark btn-block" type="submit">Send!</button>
+    </form>
+  </section>
+
+  <section class="contact-details container">
+    <div class="contact-detail">
+      <span class="eyebrow">Telefon</span>
+      <a href="tel:+4748188324">+47 481 88 324</a>
+    </div>
+    <div class="contact-detail">
+      <span class="eyebrow">E-post</span>
+      <a href="mailto:martestrandli@gmail.com">martestrandli@gmail.com</a>
+    </div>
+    <div class="contact-detail">
+      <span class="eyebrow">Sosialt</span>
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <a href="https://instagram.com/marte.drawing/" target="_blank" rel="noopener">Instagram — kreativ blogg</a>
+        <a href="https://www.linkedin.com/in/marte-strandli-75b843299/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://instagram.com/marte.drawing/" target="_blank" rel="noopener">Instagram — kreativ blogg</a>
+      <a href="https://www.linkedin.com/in/marte-strandli-75b843299/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="footer-cta" style="margin-top:0;">
+      <span class="footer-status"><span class="dot"></span>Tilgjengelig for internship og prosjekter</span>
+    </div>
+    <div class="footer-bottom">
+      <span>+47 481 88 324 · martestrandli@gmail.com</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

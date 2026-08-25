@@ -1,0 +1,700 @@
+/* ==========================================================================
+   Marte Strandli — portefølje
+   Enkel, avhengighetsfri CSS. Ingen byggeverktøy nødvendig.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+
+:root{
+  /* --- Farger — Marte sin EKTE palett (oppgitt 2026-08-25) ---
+     Grønn rampe: #14170A (mørkest) → #4F5A2A (mørk) → #707F3E (grønn) → #93A653 (lys)
+     Rosa rampe: #9E1137 (mørk) → #DE1C51 (rosa) → #FA657E (lys)
+     Regel: ALL tekst skal være en av disse fargene, eller sort/hvit — ingen andre farger.
+     Bruk: grønn = ringer/prikk/mørke knapper. Rosa = overskrifter/lenker/logo. Sort = brødtekst/strukturelle titler. */
+  --paper: #fbfbf9;
+  --paper-raised: #ffffff;
+  --ink: #000000;
+  /* ink-soft/ink-faint pekte tidligere på gråtoner — nå satt til ren sort,
+     slik at ALL "grå" tekst (ingresser, bildetekster, metadata) blir sort i stedet. */
+  --ink-soft: #000000;
+  --ink-faint: #000000;
+  --line: color-mix(in srgb, #707f3e 20%, #ffffff);
+  --line-strong: color-mix(in srgb, #707f3e 42%, #ffffff);
+
+  --chip: color-mix(in srgb, #000000 6%, #ffffff);
+  --chip-hover: color-mix(in srgb, #000000 11%, #ffffff);
+
+  --green-darkest: #14170a;
+  --green: #707f3e;
+  --green-deep: #4f5a2a;
+  --green-bright: #93a653;
+  --green-soft: color-mix(in srgb, #93a653 28%, #ffffff);
+
+  --pink: #de1c51;
+  --pink-strong: #9e1137;
+  --pink-light: #fa657e;
+
+  --accent-contrast: #ffffff;
+
+  /* --- Typografi --- */
+  --font-display: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", -apple-system, "Segoe UI", sans-serif;
+  --font-label: "Inter", -apple-system, "Segoe UI", sans-serif;
+
+  --fs-hero: clamp(2.8rem, 8vw, 6.2rem);
+  --fs-h1: clamp(2rem, 4.5vw, 3rem);
+  --fs-h2: clamp(1.5rem, 3vw, 2.1rem);
+  --fs-h3: 1.2rem;
+  --fs-body: 1.05rem;
+  --fs-small: 0.92rem;
+  --fs-label: 0.8rem;
+
+  --container: 1180px;
+  --radius: 0px;
+  --gap: 4px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+img{ max-width: 100%; display: block; }
+a{ color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+button{ font-family: inherit; cursor: pointer; }
+
+.container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+h1, h2, h3{
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+h1{ font-size: var(--fs-h1); }
+h2{ font-size: var(--fs-h2); }
+h3{ font-size: var(--fs-h3); font-weight: 700; }
+
+p{ margin: 0 0 1em; max-width: 62ch; color: var(--ink); font-weight: 500; }
+p:last-child{ margin-bottom: 0; }
+
+.eyebrow{
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: var(--fs-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.pink-link{ color: var(--pink-light); font-weight: 600; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--pink-light) 50%, transparent); text-underline-offset: 2px; }
+.pink-link:hover{ color: var(--pink-strong); }
+
+/* ---------- Knapper ---------- */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  background: var(--chip);
+  color: var(--ink);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn:hover{ background: var(--chip-hover); }
+.btn.btn-dark{ background: var(--green-deep); color: #fff; }
+.btn.btn-dark:hover{ background: var(--ink); }
+.btn.btn-on-dark{ background: #ffffff; color: var(--ink); }
+.btn.btn-on-dark:hover{ background: var(--chip); }
+.btn .btn-check{ color: var(--green); display:none; }
+.btn.is-copied .btn-check{ display:inline; }
+.btn.is-copied .btn-default{ display:none; }
+.btn.btn-block{ width: 100%; }
+
+.email-copy-wrap{
+  position: relative;
+  display: inline-block;
+}
+.email-copy{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.email-copy svg{ width: 17px; height: 17px; flex: none; color: var(--ink-faint); }
+
+/* Boble som følger musepekeren, som på den ekte Framer-siden */
+.copy-tooltip{
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -135%);
+  background: color-mix(in srgb, var(--ink) 58%, white);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease, background 0.12s ease;
+  z-index: 5;
+}
+.email-copy-wrap:hover .copy-tooltip{ opacity: 1; }
+.copy-tooltip.is-copied{ background: var(--ink); }
+@media (hover: none){
+  /* Ingen musepeker på mobil/touch — vis en enkel bekreftelse i midten i stedet */
+  .copy-tooltip{ left: 50% !important; transform: translate(-50%, -135%); }
+}
+
+/* ---------- Header / navigasjon ---------- */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav{
+  display: flex;
+  align-items: center;
+  padding: 18px 0;
+  position: relative;
+}
+.nav-logo{
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+  color: var(--pink-strong);
+}
+
+.nav-menu-btn{
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  flex: none;
+  cursor: pointer;
+  /* Ikonet skal alltid stå lengst til høyre i navbaren, uansett om
+     lenkene er åpne eller lukket — se .nav-links order:1 nedenfor. */
+  order: 2;
+}
+.nav-menu-btn:hover .dots i{ background: var(--green-darkest); }
+
+/* Meny-ikonet: 5 firkanter i et "quincunx"-mønster (4 hjørner + 1 midt).
+   I hvilemodus vises KUN de 4 hjørnene. Når du klikker ikonet, kommer den
+   midterste (lysegrønne) firkanten frem, og undermenyen ruller ut fra
+   ikonet. Klikk ikonet igjen for å rulle den sammen igjen. */
+.nav-menu-btn .dots{
+  display: grid;
+  grid-template-columns: repeat(3, 6px);
+  grid-template-rows: repeat(3, 6px);
+  gap: 0;
+  width: 18px;
+  height: 18px;
+}
+.nav-menu-btn .dots i{
+  width: 6px;
+  height: 6px;
+  background: var(--green-deep);
+  display: block;
+  transition: background 0.15s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+.nav-menu-btn .dots i.tl{ grid-column: 1; grid-row: 1; }
+.nav-menu-btn .dots i.tr{ grid-column: 3; grid-row: 1; }
+.nav-menu-btn .dots i.c{
+  grid-column: 2; grid-row: 2;
+  background: var(--green-bright);
+  opacity: 0;
+  transform: scale(0.3);
+}
+.nav-menu-btn .dots i.bl{ grid-column: 1; grid-row: 3; }
+.nav-menu-btn .dots i.br{ grid-column: 3; grid-row: 3; }
+
+/* Åpen meny: den midterste firkanten kommer frem */
+.site-header.is-open .nav-menu-btn .dots i.c{ opacity: 1; transform: scale(1); }
+
+/* Nav-lenkene er skjult som standard og "rullet inn" i ikonet (bredde 0).
+   Klikk på ikonet ruller dem ut til venstre for ikonet, i selve navbaren —
+   ikonet selv blir stående helt til høyre hele tiden (se order ovenfor). */
+.nav-links{
+  order: 1;
+  list-style: none;
+  /* margin-left:auto dytter lenke-gruppen (+ ikonet, som følger rett etter)
+     helt til høyre i navbaren, mens margin-right holder dem tett inntil ikonet. */
+  margin: 0 6px 0 auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: max-width 0.4s ease, opacity 0.25s ease;
+}
+.site-header.is-open .nav-links{
+  max-width: 420px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav-links a{
+  display: block;
+  padding: 11px 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.nav-links a:hover{ background: var(--chip); }
+.nav-links a[aria-current="page"]{ color: var(--pink-strong); }
+
+@media (max-width: 640px){
+  /* På smale skjermer er det ikke plass til at lenkene ruller ut vannrett
+     i navbaren — der vises de i en nedtrekksmeny under ikonet i stedet,
+     men fortsatt styrt av samme klikk på ikonet. */
+  .nav-links{
+    flex-direction: column;
+    align-items: stretch;
+    max-width: none;
+    width: 200px;
+    margin: 0;
+    padding: 8px;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--paper-raised);
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .site-header.is-open .nav-links{ transform: translateY(0); }
+}
+
+/* ---------- Hero (forside) ---------- */
+.hero{
+  padding: 64px 0 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+}
+.hero h1{
+  font-size: var(--fs-hero);
+  text-transform: uppercase;
+}
+.media.hero-avatar{
+  --ar: 1/1;
+  width: 240px;
+  border-radius: 50%;
+  border: 6px solid var(--green);
+  flex: none;
+  padding: 4px;
+  /* Vokser ut fra en liten grønn sirkel til full størrelse hver gang siden lastes,
+     akkurat som på Marte sitt ekte site (se skjermopptaket hun sendte). */
+  animation: avatarGrow 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.media.hero-avatar img{ border-radius: 50%; }
+@keyframes avatarGrow{
+  from{ transform: scale(0.22); opacity: 0; }
+  to{ transform: scale(1); opacity: 1; }
+}
+@media (max-width: 640px){
+  .hero{ grid-template-columns: 1fr; }
+  .media.hero-avatar{ width: 160px; }
+}
+
+/* ---------- Intro / velkomst-tekst ---------- */
+.intro{
+  padding: 28px 0 56px;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 0.85fr 1.3fr;
+  gap: 48px;
+  align-items: start;
+}
+.intro h2{ color: var(--pink); margin-bottom: 14px; }
+.intro p{ font-size: 1.05rem; }
+@media (max-width: 780px){
+  .intro{ grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ---------- Seksjon ---------- */
+.section{ padding: 56px 0; }
+.section-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.meta, .section-head .meta{
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: var(--fs-small);
+  color: var(--ink);
+}
+
+/* Overskrift + årstall-rad (f.eks. "PROSJEKTER" + "2023 – d.d") —
+   brukes i stedet for negative marginer, slik at teksten alltid
+   følger rette marger uansett skjermstørrelse. */
+.hero-heading-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Prosjekt-grid ---------- */
+.project-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+}
+@media (max-width: 720px){
+  .project-grid{ grid-template-columns: 1fr; }
+}
+.project-card{ display: block; position: relative; }
+.project-card .media{ --ar: 4/3; border-radius: 0; }
+.project-card .card-caption{
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 16px 18px;
+  background: linear-gradient(0deg, rgba(15,18,6,0.62), transparent);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+.project-card:hover .card-caption, .project-card:focus-visible .card-caption{ opacity: 1; }
+.project-card .card-caption h3{ color: #fff; margin-bottom: 2px; }
+.project-card .card-caption .card-tag{
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: var(--fs-label);
+  color: color-mix(in srgb, #fff 80%, transparent);
+}
+
+/* ---------- Bilde-container med fallback ---------- */
+.media{
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--ar, 4 / 3);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--green-soft), var(--paper-raised));
+}
+.media img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+}
+.media img.is-missing{ opacity: 0; }
+.media-fallback{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  font-family: var(--font-label);
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+.media img.is-missing ~ .media-fallback{ opacity: 1; }
+.media-fallback svg{ width: 22px; height: 22px; opacity: 0.6; }
+.media-fallback code{
+  font-size: 11px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line-strong);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--ink-soft);
+  word-break: break-all;
+}
+
+/* ---------- Bilderamme (grønn/rosa) ---------- */
+.photo-frame{ display: flex; gap: 24px; align-items: center; }
+.photo-frame .media{
+  border: 12px solid var(--green);
+  flex: none;
+  width: min(360px, 100%);
+}
+.photo-frame.frame-pink .media{ border-color: var(--pink); }
+.photo-frame .caption{ color: var(--ink-soft); font-size: 0.92rem; max-width: 30ch; }
+@media (max-width: 640px){
+  .photo-frame{ flex-direction: column; align-items: flex-start; }
+  .photo-frame .media{ width: 100%; }
+}
+
+/* ---------- Om meg-teaser (forside) ---------- */
+.section-justify p{ text-align: justify; max-width: 74ch; }
+
+/* ---------- Om meg / Q&A ---------- */
+.om-hero{ padding: 56px 0 32px; text-align: center; }
+.om-hero .eyebrow{ display: block; }
+.om-hero h1{ text-transform: uppercase; }
+.om-body p{ text-align: justify; }
+
+.qa-list{ border-top: 1px solid var(--line); }
+.qa-item{
+  border-bottom: 1px solid var(--line);
+  background: var(--chip);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  padding: 0 18px;
+  border: none;
+}
+.qa-question{
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--ink);
+}
+.qa-question .plus{
+  flex: none;
+  width: 20px; height: 20px;
+  position: relative;
+}
+.qa-question .plus::before, .qa-question .plus::after{
+  content: "";
+  position: absolute;
+  background: var(--ink);
+  transition: transform 0.2s ease;
+}
+.qa-question .plus::before{ left: 0; top: 50%; width: 100%; height: 1.5px; transform: translateY(-50%); }
+.qa-question .plus::after{ top: 0; left: 50%; width: 1.5px; height: 100%; transform: translateX(-50%); }
+.qa-item[data-open="true"] .plus::after{ transform: translateX(-50%) rotate(90deg); opacity: 0; }
+.qa-answer{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+.qa-item[data-open="true"] .qa-answer{ max-height: 300px; }
+.qa-answer p{ padding-bottom: 20px; }
+
+/* ---------- Kontakt ---------- */
+.contact-hero{ padding: 56px 0 40px; }
+.contact-hero h1{ text-transform: uppercase; }
+.contact-hero.hero-pink h1{ color: var(--pink); }
+.contact-hero .email-copy{ margin-top: 20px; }
+
+.contact-form{
+  display: grid;
+  gap: 12px;
+  max-width: 620px;
+  margin: 40px 0;
+}
+.contact-form input,
+.contact-form textarea{
+  width: 100%;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--chip);
+  padding: 16px 18px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  resize: vertical;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{ color: var(--ink-faint); }
+.contact-form textarea{ min-height: 140px; }
+.contact-form .hp-field{ position: absolute; left: -9999px; }
+
+.contact-details{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 720px){
+  .contact-details{ grid-template-columns: 1fr; }
+}
+.contact-detail .eyebrow{ display: block; }
+.contact-detail a{ font-family: var(--font-label); font-weight: 700; font-size: var(--fs-small); }
+.contact-detail a:hover{ color: var(--green); }
+
+/* ---------- Prosjekt-detaljside ---------- */
+.project-hero{ padding: 48px 0 0; }
+.project-meta-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 28px 0 40px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 40px;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: var(--fs-label);
+}
+@media (max-width: 720px){
+  .project-meta-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+.project-meta-grid dt{ color: var(--ink); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.project-meta-grid dd{ margin: 0; color: var(--ink); }
+.project-cover{ --ar: 16/9; margin-bottom: 48px; border-radius: 0; }
+.project-body{ display: grid; gap: 48px; }
+.project-body h2{ margin-bottom: 16px; }
+.project-body .media{ --ar: 16/9; margin: 8px 0 4px; }
+.project-body .media.portrait{ --ar: 3/4; max-width: 480px; }
+.project-body-text{ max-width: 68ch; }
+.project-body-text p{ max-width: none; }
+
+.explore{
+  padding: 56px 0;
+  border-top: 1px solid var(--line);
+}
+.explore-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+  margin-top: 24px;
+}
+@media (max-width: 720px){
+  .explore-grid{ grid-template-columns: 1fr; }
+}
+
+/* ---------- 404 ---------- */
+.notfound{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 28px;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.notfound h1{
+  font-size: clamp(3rem, 11vw, 7.5rem);
+  line-height: 0.94;
+  text-transform: uppercase;
+  margin-bottom: 72px;
+}
+.notfound-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.notfound-code{ font-weight: 700; font-size: 1.25rem; color: var(--ink-faint); }
+
+/* ---------- Footer (mørk) ---------- */
+.site-footer{
+  background: var(--ink);
+  color: var(--paper);
+  margin-top: 56px;
+  padding: 56px 0 28px;
+}
+.footer-links{
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  margin-bottom: 40px;
+}
+.footer-links a:hover{ color: var(--green-bright); }
+.footer-heading{
+  color: #ffffff;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  max-width: 26ch;
+}
+.footer-cta{
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.footer-status{
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  color: color-mix(in srgb, var(--paper) 88%, transparent);
+}
+.footer-status .dot{
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--green-bright);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--green-bright) 25%, transparent);
+}
+.footer-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 48px;
+  padding-top: 22px;
+  border-top: 1px solid color-mix(in srgb, var(--paper) 16%, transparent);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--paper) 62%, transparent);
+}
