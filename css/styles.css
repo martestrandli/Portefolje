@@ -297,26 +297,45 @@ p:last-child{ margin-bottom: 0; }
 .nav-links a[aria-current="page"]{ color: var(--green-deep); }
 
 @media (max-width: 640px){
-  /* På smale skjermer er det ikke plass til at lenkene ruller ut vannrett
-     i navbaren — der vises de i en nedtrekksmeny under ikonet i stedet,
-     men fortsatt styrt av samme klikk på ikonet. */
+  /* På smale skjermer fyller menyen hele skjermen når den er åpen, med
+     lenkene stort og midtstilt (samme mønster som Framer-siden), i stedet
+     for en liten nedtrekksboks under ikonet. */
   .nav-links{
     flex-direction: column;
-    align-items: stretch;
-    max-width: none;
-    width: 200px;
+    align-items: center;
+    justify-content: center;
+    max-width: 0;
+    width: 100%;
     margin: 0;
-    padding: 8px;
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    background: var(--paper-raised);
-    border: 1px solid var(--line-strong);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
-    transform: translateY(-6px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    gap: 28px;
+    background: var(--paper);
+    border: none;
+    box-shadow: none;
+    transform: none;
+    transition: max-width 0.35s ease, opacity 0.25s ease;
   }
-  .site-header.is-open .nav-links{ transform: translateY(0); }
+  .site-header.is-open .nav-links{
+    max-width: 100vw;
+    transform: none;
+  }
+  .nav-links a{
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 6px 0;
+  }
+  /* Logo og meny-ikon skal ligge over det fullskjerm-menyen, slik at de
+     forblir synlige (og ikonet klikkbart, for å lukke menyen) når
+     menyen er åpen på mobil. */
+  .nav-logo, .nav-menu-btn{
+    position: relative;
+    z-index: 1;
+  }
 }
 
 /* ---------- Hero (forside) ---------- */
