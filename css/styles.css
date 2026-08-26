@@ -144,6 +144,18 @@ p:last-child{ margin-bottom: 0; }
 .btn.btn-block{ width: 100%; }
 .btn-row{ display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
 
+/* ---------- "Kommende prosjekt"-boks (prosjekter.html) ---------- */
+.coming-soon-box{
+  display: none;
+  max-width: 420px;
+  padding: 22px 24px;
+  border: 3px solid var(--pink);
+  background: var(--paper-raised);
+}
+.coming-soon-box.is-visible{ display: block; }
+.coming-soon-box .eyebrow{ color: var(--pink-strong); margin-bottom: 10px; }
+.coming-soon-box p{ max-width: none; margin: 0; }
+
 .email-copy-wrap{
   position: relative;
   display: inline-block;

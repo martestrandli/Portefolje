@@ -116,6 +116,10 @@
     </div>
     <div style="display:flex; justify-content:flex-end; margin-top: 24px;">
       <button class="btn" id="load-more" type="button">Last mer</button>
+      <div class="coming-soon-box" id="coming-soon-box">
+        <span class="eyebrow">Kommende prosjekt</span>
+        <p>Akkurat nå jobber jeg med et systemdesignprosjekt i samarbeid med Trondheim kommune, Climagen og Nyhavnasatsingen!</p>
+      </div>
     </div>
   </section>
 
@@ -140,11 +144,11 @@
 
 <script src="js/main.js?v=20260826f"></script>
 <script>
-  // "Last mer"-knappen er klar for når du legger til flere prosjekter enn de fire du har nå.
-  // Foreløpig viser den bare en kort beskjed.
+  // "Last mer"-knappen er klar for når du legger til flere prosjekter enn de fem du har nå.
+  // Foreløpig viser den en boks med informasjon om det kommende prosjektet i stedet.
   document.getElementById('load-more').addEventListener('click', function () {
-    this.textContent = 'Flere prosjekter kommer snart';
-    this.disabled = true;
+    this.style.display = 'none';
+    document.getElementById('coming-soon-box').classList.add('is-visible');
   });
 </script>
 </body>
