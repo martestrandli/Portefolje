@@ -331,25 +331,23 @@ p:last-child{ margin-bottom: 0; }
   text-transform: uppercase;
 }
 .media.hero-avatar{
-  --ar: 1/1;
-  width: 340px;
+  --ar: 3/4;
+  width: 380px;
   margin-right: 24px;
-  border-radius: 50%;
   border: 10px solid var(--green);
   flex: none;
   padding: 4px;
-  /* Vokser ut fra en liten grønn sirkel til full størrelse hver gang siden lastes,
-     akkurat som på Marte sitt ekte site (se skjermopptaket hun sendte). */
+  /* Vokser ut litt hver gang siden lastes, akkurat som på Marte sitt ekte site
+     (se skjermopptaket hun sendte) — nå et stående bilde i stedet for sirkel. */
   animation: avatarGrow 2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.media.hero-avatar img{ border-radius: 50%; }
 @keyframes avatarGrow{
   from{ transform: scale(0.22); opacity: 0; }
   to{ transform: scale(1); opacity: 1; }
 }
 @media (max-width: 640px){
   .hero{ grid-template-columns: 1fr; }
-  .media.hero-avatar{ width: 220px; margin-right: 0; }
+  .media.hero-avatar{ width: 260px; margin-right: 0; }
 }
 
 .hero-email{ margin-top: 22px; }
