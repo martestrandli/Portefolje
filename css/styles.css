@@ -200,7 +200,8 @@ p:last-child{ margin-bottom: 0; }
 .nav{
   display: flex;
   align-items: center;
-  padding: 18px 0;
+  padding-top: 18px;
+  padding-bottom: 18px;
   position: relative;
 }
 .nav-logo{
@@ -320,7 +321,8 @@ p:last-child{ margin-bottom: 0; }
 
 /* ---------- Hero (forside) ---------- */
 .hero{
-  padding: 64px 0 40px;
+  padding-top: 64px;
+  padding-bottom: 40px;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 40px;
@@ -372,7 +374,8 @@ main .email-copy, main .btn,
 
 /* ---------- Intro / velkomst-tekst ---------- */
 .intro{
-  padding: 28px 0 56px;
+  padding-top: 28px;
+  padding-bottom: 56px;
   border-bottom: 1px solid var(--line);
   display: flex;
   justify-content: flex-end;
@@ -386,7 +389,7 @@ main .email-copy, main .btn,
 }
 
 /* ---------- Seksjon ---------- */
-.section{ padding: 56px 0; }
+.section{ padding-top: 56px; padding-bottom: 56px; }
 .section-head{
   display: flex;
   justify-content: space-between;
@@ -508,7 +511,7 @@ main .email-copy, main .btn,
 .section-justify p{ text-align: justify; max-width: 74ch; }
 
 /* ---------- Om meg / Q&A ---------- */
-.om-hero{ padding: 56px 0 32px; text-align: center; }
+.om-hero{ padding-top: 56px; padding-bottom: 32px; text-align: center; }
 .om-hero .eyebrow{ display: block; font-size: 1.05rem; }
 .om-hero h1{ text-transform: uppercase; font-size: clamp(2.6rem, 6vw, 4.2rem); }
 .om-body p{ text-align: justify; }
@@ -569,7 +572,7 @@ main .email-copy, main .btn,
 .qa-answer p{ padding-bottom: 20px; }
 
 /* ---------- Kontakt ---------- */
-.contact-hero{ padding: 56px 0 40px; }
+.contact-hero{ padding-top: 56px; padding-bottom: 40px; }
 .contact-hero h1{ text-transform: uppercase; }
 .contact-hero.hero-pink h1{ color: var(--pink); }
 .contact-hero .email-copy{ margin-top: 20px; }
@@ -601,7 +604,8 @@ main .email-copy, main .btn,
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  padding: 40px 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
   border-top: 1px solid var(--line);
 }
 @media (max-width: 720px){
@@ -612,7 +616,7 @@ main .email-copy, main .btn,
 .contact-detail a:hover{ color: var(--green); }
 
 /* ---------- Prosjekt-detaljside ---------- */
-.project-hero{ padding: 48px 0 0; }
+.project-hero{ padding-top: 48px; padding-bottom: 0; }
 .project-meta-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -665,7 +669,8 @@ main .email-copy, main .btn,
 }
 
 .explore{
-  padding: 56px 0;
+  padding-top: 56px;
+  padding-bottom: 56px;
   border-top: 1px solid var(--line);
 }
 .explore-grid{
