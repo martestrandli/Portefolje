@@ -25,6 +25,7 @@
   --chip-hover: color-mix(in srgb, #000000 11%, #ffffff);
 
   --green-darkest: #14170a;
+  --green-mid-dark: #32381a; /* midt imellom darkest og deep, prøvd på footeren 2026-08-25 */
   --green: #707f3e;
   --green-deep: #4f5a2a;
   --green-bright: #93a653;
@@ -110,6 +111,8 @@ p:last-child{ margin-bottom: 0; }
   margin-bottom: 12px;
 }
 
+.hero-eyebrow{ color: var(--green-deep); }
+
 .pink-link{ color: var(--pink-light); font-weight: 600; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--pink-light) 50%, transparent); text-underline-offset: 2px; }
 .pink-link:hover{ color: var(--pink-strong); }
 
@@ -138,6 +141,7 @@ p:last-child{ margin-bottom: 0; }
 .btn.is-copied .btn-check{ display:inline; }
 .btn.is-copied .btn-default{ display:none; }
 .btn.btn-block{ width: 100%; }
+.btn-row{ display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
 
 .email-copy-wrap{
   position: relative;
@@ -287,8 +291,8 @@ p:last-child{ margin-bottom: 0; }
   font-size: 0.95rem;
   white-space: nowrap;
 }
-.nav-links a:hover{ background: var(--chip); }
-.nav-links a[aria-current="page"]{ color: var(--pink-strong); }
+.nav-links a:hover{ color: color-mix(in srgb, var(--ink) 55%, white); }
+.nav-links a[aria-current="page"]{ color: var(--green-deep); }
 
 @media (max-width: 640px){
   /* På smale skjermer er det ikke plass til at lenkene ruller ut vannrett
@@ -327,14 +331,15 @@ p:last-child{ margin-bottom: 0; }
 }
 .media.hero-avatar{
   --ar: 1/1;
-  width: 240px;
+  width: 300px;
+  margin-right: 24px;
   border-radius: 50%;
-  border: 6px solid var(--green);
+  border: 10px solid var(--green);
   flex: none;
   padding: 4px;
   /* Vokser ut fra en liten grønn sirkel til full størrelse hver gang siden lastes,
      akkurat som på Marte sitt ekte site (se skjermopptaket hun sendte). */
-  animation: avatarGrow 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: avatarGrow 2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .media.hero-avatar img{ border-radius: 50%; }
 @keyframes avatarGrow{
@@ -343,22 +348,40 @@ p:last-child{ margin-bottom: 0; }
 }
 @media (max-width: 640px){
   .hero{ grid-template-columns: 1fr; }
-  .media.hero-avatar{ width: 160px; }
+  .media.hero-avatar{ width: 190px; margin-right: 0; }
+}
+
+.hero-email{ margin-top: 22px; }
+
+/* ---------- Tekst ease-in ved sideåpning ----------
+   All tekst i <main> og bunntekst glir mykt inn når siden lastes,
+   i stedet for å dukke brått opp. Header/navigasjon er bevisst
+   holdt utenfor, siden den skal være klikkbar med en gang. */
+@keyframes textEaseIn{
+  from{ opacity: 0; transform: translateY(14px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+main h1, main h2, main h3, main p, main .eyebrow, main dt, main dd,
+main .meta, main .caption, main .contact-detail a, main .qa-question,
+main .email-copy, main .btn,
+.site-footer h2, .site-footer .footer-links a, .site-footer .footer-status,
+.site-footer .footer-bottom{
+  animation: textEaseIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ---------- Intro / velkomst-tekst ---------- */
 .intro{
   padding: 28px 0 56px;
   border-bottom: 1px solid var(--line);
-  display: grid;
-  grid-template-columns: 0.85fr 1.3fr;
-  gap: 48px;
-  align-items: start;
+  display: flex;
+  justify-content: flex-end;
 }
+.intro > div{ max-width: 620px; }
 .intro h2{ color: var(--pink); margin-bottom: 14px; }
 .intro p{ font-size: 1.05rem; }
 @media (max-width: 780px){
-  .intro{ grid-template-columns: 1fr; gap: 24px; }
+  .intro{ justify-content: flex-start; }
+  .intro > div{ max-width: none; }
 }
 
 /* ---------- Seksjon ---------- */
@@ -485,9 +508,18 @@ p:last-child{ margin-bottom: 0; }
 
 /* ---------- Om meg / Q&A ---------- */
 .om-hero{ padding: 56px 0 32px; text-align: center; }
-.om-hero .eyebrow{ display: block; }
-.om-hero h1{ text-transform: uppercase; }
+.om-hero .eyebrow{ display: block; font-size: 1.05rem; }
+.om-hero h1{ text-transform: uppercase; font-size: clamp(2.6rem, 6vw, 4.2rem); }
 .om-body p{ text-align: justify; }
+
+.om-bio-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 780px){
+  .om-bio-grid{ grid-template-columns: 1fr; gap: 20px; }
+}
 
 .qa-list{ border-top: 1px solid var(--line); }
 .qa-item{
@@ -597,12 +629,39 @@ p:last-child{ margin-bottom: 0; }
 .project-meta-grid dt{ color: var(--ink); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
 .project-meta-grid dd{ margin: 0; color: var(--ink); }
 .project-cover{ --ar: 16/9; margin-bottom: 48px; border-radius: 0; }
-.project-body{ display: grid; gap: 48px; }
+.project-body{ display: grid; gap: 48px; margin-bottom: 48px; }
 .project-body h2{ margin-bottom: 16px; }
 .project-body .media{ --ar: 16/9; margin: 8px 0 4px; }
 .project-body .media.portrait{ --ar: 3/4; max-width: 480px; }
 .project-body-text{ max-width: 68ch; }
 .project-body-text p{ max-width: none; }
+
+/* ---------- Bilde ved siden av tekst (prosjektsider) ---------- */
+.text-media-row{ display: flex; gap: 28px; align-items: flex-start; }
+.text-media-row .project-body-text{ flex: 1 1 320px; max-width: 68ch; }
+.text-media-row .side-media{ display: flex; flex-direction: column; gap: 12px; flex: none; width: min(440px, 100%); }
+.text-media-row .side-media .media{ width: 100%; border-radius: 4px; }
+.media-natural{ aspect-ratio: auto; background: none; min-height: 160px; }
+.media-natural img{ position: static; width: 100%; height: auto; object-fit: initial; }
+.media-row-3{ display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 16px; }
+.media-row-3 .media{ border-radius: 4px; }
+.media-row-2{ display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); width: 100%; }
+.media-row-2 .media{ border-radius: 4px; }
+.media-row-4{ display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); margin-top: 16px; }
+.media-row-4 .media{ border-radius: 4px; }
+/* avstand mellom slutten av et avsnitt og neste overskrift, når flere seksjoner deler samme tekstkolonne */
+.project-body-text section + section{ margin-top: 48px; }
+.project-body-text ol{ margin: 0 0 1em; padding-left: 1.3em; max-width: 62ch; color: var(--ink); font-weight: 500; }
+.project-body-text ol li{ margin-bottom: 0.5em; }
+.project-body-text ol li:last-child{ margin-bottom: 0; }
+.project-body-text ol li .btn-row{ margin-top: 8px; }
+@media (max-width: 720px){
+  .text-media-row{ flex-direction: column; }
+  .text-media-row .side-media{ width: 100%; flex-direction: row; flex-wrap: wrap; }
+  .text-media-row .side-media .media{ width: calc(50% - 6px); }
+  .media-row-3{ grid-template-columns: 1fr 1fr; }
+  .media-row-4{ grid-template-columns: 1fr 1fr; }
+}
 
 .explore{
   padding: 56px 0;
@@ -643,7 +702,7 @@ p:last-child{ margin-bottom: 0; }
 
 /* ---------- Footer (mørk) ---------- */
 .site-footer{
-  background: var(--ink);
+  background: var(--green-darkest);
   color: var(--paper);
   margin-top: 56px;
   padding: 56px 0 28px;
