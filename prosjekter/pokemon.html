@@ -48,55 +48,55 @@
   <div class="container project-body">
 
     <div class="text-media-row">
-    <div class="project-body-text project-intro">
-      <section>
-        <h2>Om prosjektet</h2>
-        <p>I faget Mekatronikk for Designere bygde gruppen vår et fullskala arkadespill fra bunnen av. Et Pokémon-kampspill med fysisk plattform, animatronics, pneumatikk og det hele. Problemstillingen handlet om å utvikle en programmerbar maskin som kombinerer mekanikk, sensorer, aktuatorer og digital styring i ett helhetlig system. Vi startet med skisser og brukerreiser for å forstå hva som måtte fungere teknisk, og endte opp med en installasjon der alt fra beltedrift og heismekanismer til NeoPixel-lys og lydeffekter styres av én Arduino Mega. Det er flere kabler inni denne esken enn det som burde være lovlig!</p>
-        <p>Ettersom flere av gruppemedlemmene hadde mye erfaring med det tekniske, tok jeg hovedansvar for å konvertere det digitale spillet inn i den virkelige verden med tanke på brukergrensesnittet. Jeg tok bevisst perspektivet til noen uten forkunnskaper om Pokémon-verdenen, for å sikre at spillet var intuitivt og lett å forstå uansett hvem som stilte seg foran maskinen.</p>
-      </section>
-      <section>
-        <h2>Lærdom</h2>
-        <p>Ting som er selvsagte på en skjerm, som hvilken knapp som gjør hva, eller hvordan man forstår at man vinner, blir plutselig uklare når de skal uttrykkes gjennom fysiske knapper, lys og bevegelse i rommet, hovedsakelig fordi det blir tatt ut av kontekst. I tillegg mister du noe av det digitale spillets viktigste verktøy: karakterer som veileder deg og forteller deg hva du skal gjøre. Et arkadespill er raskt og enkelt, og kan ikke fortelle den samme lange og grundige historien som originalspillet gjør. Det handler ikke bare om estetikk, men om å tenke gjennom hele brukeropplevelsen fra null. Mye av det vi først forestilte oss å ta med fra den digitale verden til den fysiske måtte kuttes, ikke bare på grunn av tid, men fordi spilleren rett og slett ikke ville klart å lese mønsteret raskt nok.</p>
-      </section>
-      <section>
-        <h2>Spillets logikk</h2>
-        <p>Spillet starter når sensoren registrerer at noen står på plattformen. Musikk spilles av, lys aktiveres og motstanderen din heises opp. Spillet starter alltid med samme Pokémon, slik at spilleren kan jobbe seg gjennom alle motstanderne i rekkefølge. Går du av plattformen, registreres du som en ny spiller, og beltemekanismen nullstilles til startposisjonen.</p>
-        <p>Målet er ikke å drepe motstanderen, men å fange den. For å lykkes må du først svekke den nok ved hjelp av angrep, og deretter kaste en pokéball på rett tidspunkt.</p>
-        <p>Hver Pokémon har sitt eget element, og det må du selv finne ut. Vi har valgt Pokémon med tydelige visuelle kjennetegn, for eksempel en som åpenbart er en flammetype. Du spiller som Pikachu og må forstå hvilke elementer som er mest effektive mot motstanderen. Velger du riktig element og treffer skalaen på panelet når den er på topp, gjør du maksimal skade. Angrepsstyrken beregnes via et matrisesystem som kombinerer elementeffektivitet og presisjon på skalaen. Det tester både kunnskap og reaksjonsevne.</p>
-        <p>Når motstanderen angriper deg, slukkes knappene dine slik at du vet at det ikke er din tur. Angrepene visualiseres som lys som sendes mellom Pokémon-ene i fargen til elementet som ble brukt.</p>
-        <p>Hold øye med begge HP-barene gjennom hele kampen. Når du mener at motstanderen er svekket nok, kaster du en pokéball. Effekten avhenger av en kombinasjon av din presisjon og motstanderens gjenværende HP. Pokémon-en trekker seg ned i hullet, og om du treffer innenfor den kritiske verdien, vinner du en ekte Pokéball-nøkkelring. Treffer du ikke, stikker motstanderen av og du får en ny motstander å kjempe mot!</p>
-        <div class="media-row-4">
-          <figure class="media media-natural">
-            <img src="../images/pokemon-1.jpg" alt="Nærbilde av ledninger og komponenter i arkademaskinen" loading="lazy">
-            <div class="media-fallback"><code>images/pokemon-1.jpg</code></div>
-          </figure>
-          <figure class="media media-natural">
-            <img src="../images/pokemon-2.jpg" alt="Detaljbilde av arkademaskinen" loading="lazy">
-            <div class="media-fallback"><code>images/pokemon-2.jpg</code></div>
-          </figure>
-          <figure class="media media-natural">
-            <img src="../images/pokemon-3.jpg" alt="Mekanismen og innmaten i maskinen" loading="lazy">
-            <div class="media-fallback"><code>images/pokemon-3.jpg</code></div>
-          </figure>
-          <figure class="media media-natural">
-            <img src="../images/pokemon-4.jpg" alt="Spiller i aksjon foran arkademaskinen" loading="lazy">
-            <div class="media-fallback"><code>images/pokemon-4.jpg</code></div>
-          </figure>
-        </div>
-        <p>Gjerne sjekk ut min Instagram-bruker. Her har jeg lagt ut videoer av spillet!</p>
-        <div class="btn-row">
-          <a class="btn" href="https://www.instagram.com/p/DSCnVEjiG5o/" target="_blank" rel="noopener">Trykk for Promovideo</a>
-          <a class="btn" href="https://www.instagram.com/p/DSCuBzCCNeR/?img_index=4" target="_blank" rel="noopener">Trykk for gameplay fra presentasjonsdagen</a>
-        </div>
-      </section>
-    </div>
+    <section class="project-body-text project-intro">
+      <h2>Om prosjektet</h2>
+      <p>I faget Mekatronikk for Designere bygde gruppen vår et fullskala arkadespill fra bunnen av. Et Pokémon-kampspill med fysisk plattform, animatronics, pneumatikk og det hele. Problemstillingen handlet om å utvikle en programmerbar maskin som kombinerer mekanikk, sensorer, aktuatorer og digital styring i ett helhetlig system. Vi startet med skisser og brukerreiser for å forstå hva som måtte fungere teknisk, og endte opp med en installasjon der alt fra beltedrift og heismekanismer til NeoPixel-lys og lydeffekter styres av én Arduino Mega. Det er flere kabler inni denne esken enn det som burde være lovlig!</p>
+      <p>Ettersom flere av gruppemedlemmene hadde mye erfaring med det tekniske, tok jeg hovedansvar for å konvertere det digitale spillet inn i den virkelige verden med tanke på brukergrensesnittet. Jeg tok bevisst perspektivet til noen uten forkunnskaper om Pokémon-verdenen, for å sikre at spillet var intuitivt og lett å forstå uansett hvem som stilte seg foran maskinen.</p>
+    </section>
     <div class="side-media">
       <figure class="media media-natural">
         <img src="../images/pokemon-cover.jpg" alt="Pokemon Arcade spill — cover" loading="lazy">
         <div class="media-fallback"><code>images/pokemon-cover.jpg</code></div>
       </figure>
     </div>
+  </div>
+
+  <section class="project-body-text">
+    <h2>Lærdom</h2>
+    <p>Ting som er selvsagte på en skjerm, som hvilken knapp som gjør hva, eller hvordan man forstår at man vinner, blir plutselig uklare når de skal uttrykkes gjennom fysiske knapper, lys og bevegelse i rommet, hovedsakelig fordi det blir tatt ut av kontekst. I tillegg mister du noe av det digitale spillets viktigste verktøy: karakterer som veileder deg og forteller deg hva du skal gjøre. Et arkadespill er raskt og enkelt, og kan ikke fortelle den samme lange og grundige historien som originalspillet gjør. Det handler ikke bare om estetikk, men om å tenke gjennom hele brukeropplevelsen fra null. Mye av det vi først forestilte oss å ta med fra den digitale verden til den fysiske måtte kuttes, ikke bare på grunn av tid, men fordi spilleren rett og slett ikke ville klart å lese mønsteret raskt nok.</p>
+  </section>
+
+  <section class="project-body-text">
+    <h2>Spillets logikk</h2>
+    <p>Spillet starter når sensoren registrerer at noen står på plattformen. Musikk spilles av, lys aktiveres og motstanderen din heises opp. Spillet starter alltid med samme Pokémon, slik at spilleren kan jobbe seg gjennom alle motstanderne i rekkefølge. Går du av plattformen, registreres du som en ny spiller, og beltemekanismen nullstilles til startposisjonen.</p>
+    <p>Målet er ikke å drepe motstanderen, men å fange den. For å lykkes må du først svekke den nok ved hjelp av angrep, og deretter kaste en pokéball på rett tidspunkt.</p>
+    <p>Hver Pokémon har sitt eget element, og det må du selv finne ut. Vi har valgt Pokémon med tydelige visuelle kjennetegn, for eksempel en som åpenbart er en flammetype. Du spiller som Pikachu og må forstå hvilke elementer som er mest effektive mot motstanderen. Velger du riktig element og treffer skalaen på panelet når den er på topp, gjør du maksimal skade. Angrepsstyrken beregnes via et matrisesystem som kombinerer elementeffektivitet og presisjon på skalaen. Det tester både kunnskap og reaksjonsevne.</p>
+    <p>Når motstanderen angriper deg, slukkes knappene dine slik at du vet at det ikke er din tur. Angrepene visualiseres som lys som sendes mellom Pokémon-ene i fargen til elementet som ble brukt.</p>
+    <p>Hold øye med begge HP-barene gjennom hele kampen. Når du mener at motstanderen er svekket nok, kaster du en pokéball. Effekten avhenger av en kombinasjon av din presisjon og motstanderens gjenværende HP. Pokémon-en trekker seg ned i hullet, og om du treffer innenfor den kritiske verdien, vinner du en ekte Pokéball-nøkkelring. Treffer du ikke, stikker motstanderen av og du får en ny motstander å kjempe mot!</p>
+    <div class="media-row-4">
+      <figure class="media media-natural">
+        <img src="../images/pokemon-1.jpg" alt="Nærbilde av ledninger og komponenter i arkademaskinen" loading="lazy">
+        <div class="media-fallback"><code>images/pokemon-1.jpg</code></div>
+      </figure>
+      <figure class="media media-natural">
+        <img src="../images/pokemon-2.jpg" alt="Detaljbilde av arkademaskinen" loading="lazy">
+        <div class="media-fallback"><code>images/pokemon-2.jpg</code></div>
+      </figure>
+      <figure class="media media-natural">
+        <img src="../images/pokemon-3.jpg" alt="Mekanismen og innmaten i maskinen" loading="lazy">
+        <div class="media-fallback"><code>images/pokemon-3.jpg</code></div>
+      </figure>
+      <figure class="media media-natural">
+        <img src="../images/pokemon-4.jpg" alt="Spiller i aksjon foran arkademaskinen" loading="lazy">
+        <div class="media-fallback"><code>images/pokemon-4.jpg</code></div>
+      </figure>
     </div>
+    <p>Gjerne sjekk ut min Instagram-bruker. Her har jeg lagt ut videoer av spillet!</p>
+    <div class="btn-row">
+      <a class="btn" href="https://www.instagram.com/p/DSCnVEjiG5o/" target="_blank" rel="noopener">Trykk for Promovideo</a>
+      <a class="btn" href="https://www.instagram.com/p/DSCuBzCCNeR/?img_index=4" target="_blank" rel="noopener">Trykk for gameplay fra presentasjonsdagen</a>
+    </div>
+  </section>
 
   </div>
 
