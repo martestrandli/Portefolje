@@ -797,11 +797,16 @@ main .email-copy, main .btn,
 
 
 .summary-box {
-  border: 1.5px solid #2e7d32;
-  border-radius: 8px;
   padding: 1.25rem 1.5rem;
   margin: 1.5rem auto 4rem;
   background: rgba(46, 125, 50, 0.05);
+}
+
+@media (max-width: 640px){
+  .summary-box {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 .summary-box .summary-label {
