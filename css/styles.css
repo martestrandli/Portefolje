@@ -822,4 +822,5 @@ main .email-copy, main .btn,
 .summary-box p {
   margin: 0;
   line-height: 1.6;
+  max-width: none;
 }
