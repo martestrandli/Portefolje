@@ -50,14 +50,14 @@
       Hvis du hoster et annet sted enn Netlify, må skjemaet kobles til en
       annen tjeneste (f.eks. Formspree) — spør Claude når du er klar for det.
     -->
-    <form class="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="kontakt-takk.html">
-      <input type="hidden" name="form-name" value="kontakt">
-      <p class="hp-field"><label>Ikke fyll ut dette feltet: <input name="bot-field"></label></p>
+    <form class="contact-form" name="kontakt" method="POST" action="https://formspree.io/f/mzebegva">
+      <input type="hidden" name="_next" value="https://martestrandli.no/kontakt-takk.html">
+      <input type="hidden" name="_subject" value="Ny melding fra martestrandli.no">
       <input type="text" name="navn" placeholder="Navn" required>
       <input type="email" name="epost" placeholder="Email" required>
       <textarea name="melding" placeholder="Fyll ut her...." required></textarea>
       <button class="btn btn-dark btn-block" type="submit">Send!</button>
-    </form>
+</form>
   </section>
 
   <section class="contact-details container">
