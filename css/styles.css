@@ -237,7 +237,15 @@ p:last-child{ margin-bottom: 0; }
   /* Ikonet skal alltid stå lengst til høyre i navbaren, uansett om
      lenkene er åpne eller lukket — se .nav-links order:1 nedenfor. */
   order: 2;
+  margin-left: auto;
 }
+
+@media (max-width: 1180px){
+  .nav-menu-btn{
+    margin-right: 6px;
+  }
+}
+
 .nav-menu-btn:hover .dots i{ background: var(--green-darkest); }
 
 /* Meny-ikonet: 5 firkanter i et "quincunx"-mønster (4 hjørner + 1 midt).
