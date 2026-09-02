@@ -289,7 +289,7 @@ p:last-child{ margin-bottom: 0; }
   list-style: none;
   /* margin-left:auto dytter lenke-gruppen (+ ikonet, som følger rett etter)
      helt til høyre i navbaren, mens margin-right holder dem tett inntil ikonet. */
-  margin: 0 6px 0;
+  margin: 0 6px 0 0;
   padding: 0;
   display: flex;
   align-items: center;
